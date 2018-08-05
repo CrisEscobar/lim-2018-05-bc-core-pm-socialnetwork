@@ -12,18 +12,17 @@ window.onload = () => {
         if (user) { //Si está logeado, mostraremos la opción loggedIn
             console.log('esta logueado')
 
-            userName.innerHTML =`${user.displayName}`;
-            userImage.innerHTML=` <img src="${user.photoURL}" alt="user" class="profile-photo"/>`;
-            writeUserData(user.uid , user.displayName, user.email, user.photoURL);
-     
+            userName.innerHTML = `${user.displayName}`;
+            userImage.innerHTML = ` <img src="${user.photoURL}" alt="user" class="profile-photo"/>`;
+            writeUserData(user.uid, user.displayName, user.email, user.photoURL);
             bd.classList.remove("hiden");
-           posts.classList.remove("hiden");
-  
+            posts.classList.remove("hiden");
+
         } else { //Si NO está logeado, mostraremos la opción loggedOut
             console.log('no esta logueado');
             posts.classList.add('hiden');
             bd.classList.add('hiden');
-            
+
         }
         console.log("User > " + JSON.stringify(user));
     });
@@ -32,39 +31,40 @@ window.onload = () => {
 // .limitToLast(1)
 // .on('child_added', (newMessage)=>{
 //     messageContainer.innerHTML += `
-       
+
 //         <p>${newMessage.val().text}</p>
 //     `;
-    
+
 //     // <p>Nombre : ${newMessage.val().creatorName}</p>
 // });
 function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
+        username: name,
+        email: email,
+        profile_picture: imageUrl
     });
-  }
+}
 
 const bd = document.getElementById('bd');
 const btnSave = document.getElementById('btnSave');
 const post = document.getElementById('post');
 const posts = document.getElementById('posts');
 
-function writeNewPost(uid,body){
+function writeNewPost(uid, body) {
     var postData = {
-        uid:uid,
-        body:body,
+        uid: uid,
+        body: body
     };
 
-var newPostKey = firebase.database().ref().child('posts').push().key;
-var updates = {};
-updates['/posts/' + newPostKey] = postData;
-updates['/user-posts/' + uid + '/' + newPostKey ] = postData; 
-firebase.database().ref().update(updates);
-return newPostKey;
+    var newPostKey = firebase.database().ref().child('posts').push().key;
+    var updates = {};
+    updates['/posts/' + newPostKey] = postData;
+    updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    firebase.database().ref().update(updates);
+    return newPostKey;
+
 };
-btnSave.addEventListener('click' , () => {
+btnSave.addEventListener('click', () => {
     const userId = firebase.auth().currentUser.uid;
     const newPost = writeNewPost(userId , post.value);
     var btnUpdate = document.createElement('input');
@@ -119,8 +119,19 @@ contPost.appendChild(btnDelete);
 contPost.appendChild(btnLike);       //like
 posts.appendChild(contPost);
 })
+// const searchUser= getElementById("search-user")
 
-function reload_page(){
+// searchUser.addEventListener('keyup', () => {
+//     let usersFilter = userName;
+//     search = search.toLowerCase();
+//     usersFilter = usersFilter.filter(user => user.name.toLowerCase().indexOf(search) >= 0)
+//     return usersFilter;
+
+// }
+// )
+
+
+function reload_page() {
     window.location.reload();
 }
 
