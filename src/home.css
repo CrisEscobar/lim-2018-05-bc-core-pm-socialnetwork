@@ -27,10 +27,11 @@
 .userName ,  .userPasswordLogin, .buttonLogin, .userLastName , .userEmailLogin, .userEmail, .userPassword, .buttonRegisterForm, .userName,.userLastName, .userPassword, .userPasswordVerification,.buttonRegister {
     border:0px;
     width:60%;
-    height:20%px;
+    height:30px;
     border-radius:200px;
     font-family: 'Oswald', sans-serif;
     background-color:rgb(250, 255, 161);
+    
 }
 
 .buttonRegister{
@@ -50,6 +51,7 @@ margin-top: 70px ;
 margin-bottom:70px;
 margin-right:0px;
 background-color:white;
+/* opacity: 0.5; */
 }
 
 
@@ -102,4 +104,20 @@ background-color:white;
 } 
 #footer {
     text-align:center;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .text-slogan {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #col-2 {
+            margin-top: 0px ;
+            margin-bottom:25px;
+            
+            }
+        
+    
 }

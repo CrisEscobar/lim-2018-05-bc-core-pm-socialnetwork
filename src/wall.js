@@ -73,6 +73,10 @@ btnSave.addEventListener('click' , () => {
     var btnDelete = document.createElement('input');
     btnDelete.setAttribute('value' , 'delete' ) ;
     btnDelete.setAttribute('type' , 'button');
+    var btnLike = document.createElement('input');  //like
+    btnLike.setAttribute('value' , 'like' ) ;       //like
+    btnLike.setAttribute('type' , 'button');        //like
+    btnLike.setAttribute('id' , 'likes');           //like
     var contPost = document.createElement('div');
     var textPost = document.createElement('textarea');
     textPost.setAttribute('id' , newPost);
@@ -85,6 +89,17 @@ btnSave.addEventListener('click' , () => {
 //    alert('hola');
    reload_page();
     })
+
+
+    btnLike.addEventListener('click',()=>{
+        //alert("hola");
+        var contador = 0;    
+        contador = contador + 1;
+        var btnLikeCount = document.getElementById("likes");
+        btnLikeCount.value = "like (" + contador + ")";
+        
+         })
+
     
   btnUpdate.addEventListener('click', () =>{
     const newUpdate = document.getElementById(newPost);
@@ -101,6 +116,7 @@ btnSave.addEventListener('click' , () => {
 contPost.appendChild(textPost);
 contPost.appendChild(btnUpdate);
 contPost.appendChild(btnDelete);
+contPost.appendChild(btnLike);       //like
 posts.appendChild(contPost);
 })
 
