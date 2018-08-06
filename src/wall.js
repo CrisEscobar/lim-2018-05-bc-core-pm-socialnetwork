@@ -10,7 +10,7 @@ const selectPublicPrivate = document.getElementById('selectPublicPrivate');
 const perfilNoticias = document.getElementById('noticias');
 // const bd = document.getElementById('bd');
 
-function myFunction() {
+function menuOptions() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive";
@@ -156,15 +156,18 @@ const showallPostsWall = (newPosts) => {
     const author = document.createElement('h4');
     author.setAttribute('style',"margin-top: 22px,");
     author.setAttribute('class',"author");
-    // author.setAttribute('class',  )
+  
+
+const salto1= document.createElement('br');
+    salto1.setAttribute('class', "w3-clear");
 
     const textPost = document.createElement('p');
-    textPost.setAttribute('class', 'w3-left w3-circle w3-margin-right');
+    textPost.setAttribute('class', 'textPostWall');
     textPost.setAttribute('id', postskey);
     textPost.innerHTML = `${newPosts.val().body}`;
 
 /* <button id="${newPostsUser.val().key}" type="button" class="w3-button w3-theme-d1 w3-margin-bottom "><i class="fa fa-thumbs-up"></i> EcoLike</button>  */
-    const br = document.createElement('br');
+    // const br = document.createElement('br');
     const btnLike = document.createElement('input');
     btnLike.setAttribute('value', 'Like ♥');
     btnLike.setAttribute('type', 'button')
@@ -207,9 +210,10 @@ const showallPostsWall = (newPosts) => {
     allPostsWall.appendChild(contPost);
     contPost.appendChild(image);
     contPost.appendChild(author);
+    contPost.appendChild(salto1);
     contPost.appendChild(espacaio);
     contPost.appendChild(textPost);
-    contPost.appendChild(br);
+    // contPost.appendChild(br);
     contPost.appendChild(espacaio);
     contPost.appendChild(contadorlike);
     contPost.appendChild(btnLike);
@@ -239,25 +243,25 @@ const showPostsUserProfile = (newPostsUser) => {
     espacaio.setAttribute('class', "w3-clear")
 
     const author = document.createElement('h4');
-    author.setAttribute('class',"w3-left w3-circle w3-margin-left");
+    author.setAttribute('class',"author");
     author.setAttribute('style',"margin-top: 22px");
     // author.setAttribute('class',  )
     const salto1= document.createElement('br');
     salto1.setAttribute('class', "w3-clear");
 
     const textPost = document.createElement('p');
-    textPost.setAttribute('class', "w3-left w3-circle w3-margin-right");
+    textPost.setAttribute('class', "textPostProfile");
     
     textPost.setAttribute('id', postskey);
     textPost.innerHTML = `${newPostsUser.val().body}`;
-    const salto = document.createElement('br');
-    salto.setAttribute('class', "w3-clear");  
+    // const salto = document.createElement('br');
+    // salto.setAttribute('class', "w3-clear");  
     
     const btnEdit = document.createElement('button');
     btnEdit.setAttribute('value', 'Editar');
     btnEdit.setAttribute('title', 'Editar');
     btnEdit.setAttribute('id', postskey);
-    btnEdit.setAttribute('class', "w3-pink w3-button w3-margin-bottom")
+    btnEdit.setAttribute('class', "w3-blue w3-button w3-margin-bottom")
     btnEdit.setAttribute('style','margin: 10px')
     const icoEdit= document.createElement('i');
     icoEdit.setAttribute('class','fas fa-pen');
@@ -320,8 +324,11 @@ const showPostsUserProfile = (newPostsUser) => {
             btnpublish.style.display = 'none';
             btnEdit.style.display = 'block';
             textPost.contentEditable = "false";
+            
         })
         contPost.appendChild(btnpublish);
+        
+        
     });
 
     userPostProfile.appendChild(contPost);
@@ -330,7 +337,7 @@ const showPostsUserProfile = (newPostsUser) => {
     contPost.appendChild(salto1);
     contPost.appendChild(espacaio);
     contPost.appendChild(textPost);
-    contPost.appendChild(salto);
+    // contPost.appendChild(salto);
     contPost.appendChild(espacaio);
     contPost.appendChild(btnEdit);
     btnEdit.appendChild(icoEdit);
